@@ -1,0 +1,19 @@
+lerna(info)    Lerna v2.0.0-rc.3
+lerna(info)    Independent Versioning Mode
+lerna(verbose) GitUtilities.isInitialized    (".")
+lerna(verbose) GitUtilities.isInitialized    (".") => true
+lerna(verbose) FileSystemUtilities.existsSync("./VERSION")
+lerna(verbose) FileSystemUtilities.existsSync("./VERSION") => false
+lerna(verbose) Attempting running RunCommand.initialize
+lerna(error)   Errored while running RunCommand.initialize
+    Error: No packages found with the npm script 'test'
+        at RunCommand.initialize (/usr/local/lib/node_modules/lerna/lib/commands/RunCommand.js:79:18)
+        at RunCommand._attempt (/usr/local/lib/node_modules/lerna/lib/Command.js:249:21)
+        at RunCommand.runCommand (/usr/local/lib/node_modules/lerna/lib/Command.js:233:12)
+        at RunCommand.run (/usr/local/lib/node_modules/lerna/lib/Command.js:130:12)
+        at Object.handler (/usr/local/lib/node_modules/lerna/lib/commands/RunCommand.js:35:84)
+        at Object.self.runCommand (/usr/local/lib/node_modules/lerna/node_modules/yargs/lib/command.js:231:22)
+        at Object.Yargs.self._parseArgs (/usr/local/lib/node_modules/lerna/node_modules/yargs/yargs.js:990:30)
+        at Object.get [as argv] (/usr/local/lib/node_modules/lerna/node_modules/yargs/yargs.js:930:19)
+        at Object.<anonymous> (/usr/local/lib/node_modules/lerna/bin/lerna.js:33:3)
+        at Module._compile (module.js:570:32)
