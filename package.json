@@ -1,5 +1,21 @@
 {
+  "name": "main",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "lerna bootstrap --concurrency=1",
+    "start": "cd projects/main-site && yarn start",
+    "test": "lerna run test",
+    "build": "make build",
+    "lint": "make lint",
+    "fix": "make fix"
+  },
   "devDependencies": {
-    "lerna": "^2.0.0-rc.3"
+    "lerna": "^2.0.0-rc.3",
+    "lerna-changelog": "^0.2.0"
+  },
+  "devEngines": {
+    "node": ">= 4.x <= 7.x",
+    "npm": "2.x || 3.x || 4.x"
   }
 }
