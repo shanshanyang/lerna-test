@@ -1,0 +1,10 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "neutrino": "^5.8.0",
+    "neutrino-preset-web": "^5.8.0"
+  }
+}
