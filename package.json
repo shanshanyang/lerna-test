@@ -4,11 +4,108 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "lerna bootstrap --concurrency=1",
-    "start": "cd projects/main-site && yarn start",
+    "start": "cd projects/project3 && yarn start",
     "test": "lerna run test",
     "build": "make build",
     "lint": "make lint",
-    "fix": "make fix"
+    "fix": "make fix",
+
+    "clean": "rimraf node_modules && cd server/static && rimraf node_modules && lerna clean",
+    "compile": "better-npm-run compile",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "lint": "stylelint \"packages/**/*.scss\" && eslint . --cache",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "better-npm-run start",
+    "dev": "better-npm-run dev",
+    "dev:nw": "npm run dev -- --nw",
+    "dev:no-debug": "npm run dev -- --no_debug",
+    "test": "better-npm-run test",
+    "test:saucelabs": "better-npm-run test:saucelabs",
+    "test:dev": "npm run test -- --watch",
+    "deploy": "better-npm-run deploy",
+    "deploy:dev": "better-npm-run deploy:dev",
+    "deploy:prod": "better-npm-run deploy:prod",
+    "deploy:standalone": "better-npm-run deploy:standalone",
+    "deploy:nice2_11_legacy": "better-npm-run deploy:nice2_11_legacy",
+    "publish": "better-npm-run publish",
+    "codecov": "cat ./coverage/lcov/lcov.info | codecov",
+    "setup": "yarn && cd server/static && yarn",
+    "plop": "babel-node ./node_modules/plop",
+    "commitmsg": "babel-node bin/githooks/msg-validation",
+    "precommit": "npm run lint",
+    "betterScripts": {
+      "compile": {
+        "command": "babel-node bin/compile",
+        "env": {
+          "DEBUG": "app:*"
+        }
+      },
+      "dev": {
+        "command": "nodemon --exec babel-node bin/dev-server",
+        "env": {
+          "NODE_ENV": "development",
+          "DEBUG": "app:*"
+        }
+      },
+      "deploy": {
+        "command": "npm run compile",
+        "env": {
+          "DEBUG": "app:*"
+        }
+      },
+      "deploy:dev": {
+        "command": "npm run deploy",
+        "env": {
+          "NODE_ENV": "development",
+          "DEBUG": "app:*"
+        }
+      },
+      "deploy:prod": {
+        "command": "npm run deploy",
+        "env": {
+          "NODE_ENV": "production",
+          "DEBUG": "app:*"
+        }
+      },
+      "deploy:standalone": {
+        "command": "npm run deploy",
+        "env": {
+          "NODE_ENV": "standalone",
+          "DEBUG": "app:*"
+        }
+      },
+      "deploy:nice2_11_legacy": {
+        "command": "npm run deploy",
+        "env": {
+          "NODE_ENV": "nice2_11_legacy",
+          "DEBUG": "app:*"
+        }
+      },
+      "publish": {
+        "command": "npm run deploy:prod && npm publish dist"
+      },
+      "start": {
+        "command": "webpack-dashboard babel-node bin/dev-server",
+        "env": {
+          "DEBUG": "app:*"
+        }
+      },
+      "test": {
+        "command": "babel-node ./node_modules/karma/bin/karma start build/karma.conf",
+        "env": {
+          "NODE_ENV": "test",
+          "DEBUG": "app:*"
+        }
+      },
+      "test:saucelabs": {
+        "command": "babel-node ./node_modules/karma/bin/karma start build/karma-saucelabs.conf",
+        "env": {
+          "NODE_ENV": "test",
+          "DISABLE_ISTANBUL_COVERAGE": true,
+          "DEBUG": "app:*"
+        }
+      }
+    }
   },
   "devDependencies": {
     "lerna": "^2.0.0-rc.3",

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "neutrino start --use neutrino-preset-web",
+    "build": "neutrino build --use neutrino-preset-web"
+  },
   "dependencies": {
     "neutrino": "^5.8.0",
     "neutrino-preset-web": "^5.8.0"
